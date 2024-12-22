@@ -1,0 +1,65 @@
+syntax = "v1"
+
+type User {
+	ID       int64  `json:"id"` //用户的唯一ID
+	Username string `json:"username"` //用户名
+}
+
+type Blog {
+	ID      int64  `json:"id"` //博客的唯一ID
+	Title   string `json:"title"` //博客标题
+	Content string `json:"content"` //博客内容
+	UserID  int64  `json:"user_id"` //博客作者的ID
+	Author  string `json:"author"` //博客作者的用户名
+}
+
+type RegisterReq {
+	Username string `json:"username"` //注册用户名
+	Password string `json:"password"` //注册密码
+}
+
+type LoginReq {
+	Username string `json:"username"` //登录用户名
+	Password string `json:"password"` //登录密码
+}
+
+type LoginRes {
+	Token string `json:"token"` //登录成功后返回token
+}
+
+type CreateBlogReq {
+	Title   string `json:"title"` //博客标题
+	Content string `json:"content"` //博客内容
+}
+
+type CreateBlogRes {
+	BlogID int64 `json:"blog_id"` //创建成功后返回博客的ID
+}
+
+type GetBlogListReq {
+	Page     int64 `json:"page"` //当前页码
+	PageSize int64 `json:"page_size"` //每页显示的博客数量
+}
+
+type BlogListRes {
+	Blogs []Blog `json:"blogs"` //博客列表
+}
+
+service blog-api {
+	//用户注册
+	@handler Register
+	post /api/users/register (RegisterReq)
+
+	//用户登陆
+	@handler Login
+	post /api/users/login (LoginReq) returns (LoginRes)
+
+	//创建博客
+	@handler CreateBlog
+	post /api/blogs/create (CreateBlogReq) returns (CreateBlogRes)
+
+	//获取博客列表
+	@handler GetBlogList
+	get /api/blogs/list (GetBlogListReq) returns (BlogListRes)
+}
+
