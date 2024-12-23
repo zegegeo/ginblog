@@ -3,9 +3,10 @@ package handler
 import (
 	"net/http"
 
-	"ginblog/blog/internal/logic"
-	"ginblog/blog/internal/svc"
-	"ginblog/blog/internal/types"
+	"goblog/blog/internal/logic"
+	"goblog/blog/internal/svc"
+	"goblog/blog/internal/types"
+
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 

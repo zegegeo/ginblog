@@ -4,3 +4,7 @@ Port: 8888
 mysqlConfig:
   datasource: "root:lwz2001110@tcp(localhost:3306)/GINBLOG?charset=utf8mb4&parseTime=True&loc=Local"
   connectTimeout: 300
+Auth:
+  #必须是8位以上
+  secretKey: "secret123456"
+  expire: 3600

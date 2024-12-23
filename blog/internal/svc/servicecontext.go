@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"ginblog/blog/internal/config"
-	"ginblog/blog/internal/db"
+	"goblog/blog/internal/config"
+	"goblog/blog/internal/db"
 
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )

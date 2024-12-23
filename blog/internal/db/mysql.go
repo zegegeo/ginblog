@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 	
-	"ginblog/blog/internal/config"
+	"goblog/blog/internal/config"
 
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 

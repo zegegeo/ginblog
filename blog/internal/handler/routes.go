@@ -6,12 +6,22 @@ package handler
 import (
 	"net/http"
 
-	"ginblog/blog/internal/svc"
+	"goblog/blog/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
 )
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodGet,
+				Path:    "/api/users/info",
+				Handler: GetUserInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.SecretKey),
+	)
 	server.AddRoutes(
 		[]rest.Route{
 			{

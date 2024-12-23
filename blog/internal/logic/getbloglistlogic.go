@@ -3,8 +3,8 @@ package logic
 import (
 	"context"
 
-	"ginblog/blog/internal/svc"
-	"ginblog/blog/internal/types"
+	"goblog/blog/internal/svc"
+	"goblog/blog/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

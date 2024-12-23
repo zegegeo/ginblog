@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	"ginblog/blog/internal/svc"
-	"ginblog/blog/internal/types"
-	"ginblog/blog/internal/model/user_model"
-	"ginblog/blog/internal/biz"
+	"goblog/blog/internal/svc"
+	"goblog/blog/internal/types"
+	"goblog/blog/internal/model/user_model"
+	"goblog/blog/internal/biz"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

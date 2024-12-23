@@ -19,6 +19,7 @@ type (
 		usersModel
 		withSession(session sqlx.Session) UsersModel
 		FindByUsername(ctx context.Context, username string) (*Users, error)
+		FindByUsernameAndPassword(ctx context.Context, username string, password string) (*Users, error)
 	}
 
 	customUsersModel struct {
@@ -38,6 +39,20 @@ func (m *customUsersModel) withSession(session sqlx.Session) UsersModel {
 }
 
 func (m *defaultUsersModel) FindByUsername(ctx context.Context, username string) (*Users, error) {
+	var resp Users
+	query := fmt.Sprintf("select %s from %s where `username` = ? limit 1", usersRows, m.table)
+	err := m.conn.QueryRowCtx(ctx, &resp, query, username)
+	switch err {
+	case nil:
+		return &resp, nil
+	case sql.ErrNoRows,sqlx.ErrNotFound:
+		return nil, nil
+	default:
+		return nil, err
+	}
+}
+
+func (m *defaultUsersModel) FindByUsernameAndPassword(ctx context.Context, username string, password string) (*Users, error) {
 	var resp Users
 	query := fmt.Sprintf("select %s from %s where `username` = ? limit 1", usersRows, m.table)
 	err := m.conn.QueryRowCtx(ctx, &resp, query, username)

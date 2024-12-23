@@ -54,6 +54,10 @@ service blog-api {
 	@handler Login
 	post /api/users/login (LoginReq) returns (LoginRes)
 
+	//获取用户信息
+	@handler GetUserInfo
+	get /api/users/info returns (User)
+
 	//创建博客
 	@handler CreateBlog
 	post /api/blogs/create (CreateBlogReq) returns (CreateBlogRes)
